@@ -1,0 +1,64 @@
+html {
+  color: #111;
+  background: #FFF;
+  font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 35em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figure {
+  margin-bottom: 4em;
+  padding: 0;
+  margin-left: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-style: solid;
+  border-color: lightgrey;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: left;
+}
+
+tbody th {
+  font-weight: normal;
+}
+
+tr th:first-child,
+tr tr:first-child {
+  padding-left: 0;
+}
+
+caption {
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: .5em;
+}
+
+.numeric {
+  text-align: right;
+}
+
+table.with-rowgroups tbody tr th:first-child {
+  padding-left: 15px;
+}
+
+table.with-rowgroups tbody tr th[scope=rowgroup] {
+  padding-left: 0px;
+  font-weight: bold;
+}

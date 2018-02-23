@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GOV.UK government organisation autocomplete</title>
+    <link rel="stylesheet" href="/src/sortable-table.css" />
+     <link rel="stylesheet" href="base.css" />
+    <script type="text/javascript" src="/src/sortable-table.js"></script>
+  </head>
+  <body>
+
+    <main>
+
+      <h1>Sortable Table</h1>
+
+      <p>This javascript function makes tables sortable as a progressive enhancement.</p>
+
+
+      <h2>How to use</h2>
+
+      <p>After including the <a href="/src/sortable-table.js">javascript function</a>, sortable tables need to be initialized with a reference to the table element using code similiar to the following:</p>
+
+      <code>
+        var table = document.getElementById('table-id');<br>
+        new SortableTable(table);
+      </code>
+
+      <p>(If you have more than one table, you will need to initialize each separately.)</p>
+
+      <p>All configuration is done in the HTML.</p>
+
+      <p>
+        To make a column sortable, add an <code>aria-sort</code> attribute to the
+        <code>&lt;th&gt;</code> cell within the <code>&lt;thead&gt;</code> which
+        describes that column. Use one of the following three values:
+      </p>
+
+      <ul>
+        <li><code>none</code> -  if column isn’t sorted by default (on page load), but should be sortable.</li>
+        <li><code>ascending</code> -  column sorted in ascending order (smallest number first or
+        A-A).</li>
+        <li><code>descending</code> -  column sorted in descending order (biggest number first or Z-A).</li>
+      </ul>
+
+      <p>When a sortable column header is clicked, by default the code will look at the text content of each of the cells within that column, and will attempt to convert it to a floating point number using <code>parseFloat()</code>, or otherwise will treat it a string.</p>
+
+      <p>If you have data which doesn’t parse to a float, but which shouldn’t simply by sorted as a string, then use a <code>data-sort-value=""</code> attribute to specify an alternate value to use for sorting, either as a number or a string.</p>
+
+      <p>For example:</p>
+
+      <ul>
+        <li><code>&lt;td data-sort-value="2018-01-12"&gt;12 Jan 2018&lt;/td&gt;</code> – Dates</li>
+        <li><code>&lt;td data-sort-value="123456"&gt;12,3456&lt;/td&gt;</code> – Formatted numbers</li>
+        <li><code>&lt;td data-sort-value="9.2"&gt;£9.20&lt;/td&gt;</code> – Currency amounts</li>
+      </ul>
+
+      <p>If your table has row-groups, using multiple <code>&lt;tbody&gt;</code> elements, then within each row-group, add the attribute <code>scope="rowgroup"</code> to the cell which represents the header for that group.</p>
+
+      <h2>Examples</h2>
+
+      <figure>
+        <table>
+          <caption>Simple table</caption>
+          <thead>
+            <tr>
+              <th aria-sort="ascending">Title</th>
+              <th class="numeric" aria-sort="none">Amount</th>
+              <th aria-sort="none">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Aardvark</th>
+              <td class="numeric">100</td>
+              <td data-sort-value="2018-01-12">12 Jan 2018</td>
+            </tr>
+            <tr>
+              <th>Buffalo</th>
+              <td class="numeric">12</td>
+              <td data-sort-value="2017-02-23">23 Feb 2017</td>
+            </tr>
+            <tr>
+              <th>Cantelope</th>
+              <td class="numeric">91</td>
+              <td data-sort-value="2013-12-09">9 Dec 2013</td>
+            </tr>
+            <tr>
+              <th>Dog</th>
+              <td class="numeric" data-sort-value="10102">10,102</td>
+              <td data-sort-value="2019-03-23">23 Mar 2019</td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+
+
+      <figure>
+        <table class="with-rowgroups">
+          <caption>Complex table</caption>
+          <thead>
+            <tr>
+              <th aria-sort="ascending">Place</th>
+              <th class="numeric" aria-sort="none">Amount</th>
+              <th class="numeric" aria-sort="none">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="rowgroup">Canada</th>
+              <td class="numeric" data-sort-value="30012">30,012</td>
+              <td class="numeric" data-sort-value="8">£8 billion</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th scope="rowgroup">United Kingdom</th>
+              <td class="numeric" data-sort-value="102304">102,304</td>
+              <td class="numeric" data-sort-value="20">£20 billion</td>
+            </tr>
+            <tr>
+              <th>England</th>
+              <td class="numeric" data-sort-value="81913">81,913</td>
+              <td class="numeric" data-sort-value="8.1">£8.1 billion</td>
+            </tr>
+            <tr>
+              <th>Scotland</th>
+              <td class="numeric" data-sort-value="10102">10,102</td>
+              <td class="numeric" data-sort-value="1.2">£1.2 billion</td>
+            </tr>
+            <tr>
+              <th>Wales</th>
+              <td class="numeric" data-sort-value="31010">31,010</td>
+              <td class="numeric" data-sort-value="2.7">£2.7 billion</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th scope="rowgroup">United States</th>
+              <td class="numeric" data-sort-value="1032103">1,032,103</td>
+              <td class="numeric" data-sort-value="103">£103 billion</td>
+            </tr>
+            <tr>
+              <th>California</th>
+              <td class="numeric" data-sort-value="304103">304,103</td>
+              <td class="numeric" data-sort-value="31">£31 billion</td>
+            </tr>
+            <tr>
+              <th>New York</th>
+              <td class="numeric" data-sort-value="845103">845,103</td>
+              <td class="numeric" data-sort-value="12">£12 billion</td>
+            </tr>
+            <tr>
+              <th>Texas</th>
+              <td class="numeric" data-sort-value="210001">210,001</td>
+              <td class="numeric" data-sort-value="19">£19 billion</td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+
+      <script>
+        var tables = document.getElementsByTagName('TABLE')
+
+        for (var i = 0; i < tables.length; i++) {
+          new SortableTable(tables[i])
+        }
+      </script>
+
+    </main>
+  </body>
+</html>
