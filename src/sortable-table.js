@@ -3,7 +3,7 @@ function SortableTable(table) {
   var table = table;
   var status;
 
-  options = {};
+  var options = {};
   options.statusMessage = 'Sort by %heading% (%direction%)';
   options.ascendingText = 'ascending';
   options.descendingText = 'descending';
